@@ -1,5 +1,32 @@
 {% load static %}
-<div class="container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <img src="{% static 'img/1.png' %}" alt="">
-
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago Rechazado</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(ellipse, rgb(77, 82, 255), rgb(63, 175, 255), rgb(52, 170, 255));
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="{% static 'img/1.png' %}" alt="">
+        <button onclick="window.location.href='{% url 'MenuPrincipal' %}'" style="margin-top: 20px;">Volver al Menú</button>
+    </div>
+</body>
+</html>
