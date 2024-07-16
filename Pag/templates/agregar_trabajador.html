@@ -1,77 +1,117 @@
-<!-- agregar_trabajador.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/addproduct.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Agregar Trabajador</title>
 </head>
+
 <body>
-    <h1>Agregar Nuevo Trabajador</h1>
-    <form id="formulario-trabajador">
-        <!-- Campos para ingresar los datos del trabajador -->
-        <label for="rut">RUT:</label>
-        <input type="text" id="rut" name="rut" required><br>
+    <header>
+        <nav id="cssmenu">
+            <ul>
+                <li>
+                    <a href="#">Inventario <i class="fas fa-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="{% url 'Vendedor' %}">Ver inventario actual</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required><br>
+    <div class="container">
+        <h1>Agregar Nuevo Trabajador</h1>
+        <form method="post" action="{% url 'agregartrabajador' %}" enctype="multipart/form-data"
+            onsubmit="return validarRut()">
+            {% csrf_token %}
+            <!-- Campos para ingresar los datos del trabajador -->
+            <label for="rut">RUT:</label>
+            <input type="text" id="rut" name="rut" placeholder="Ingresar el Rut sin puntos pero con guion" required><br>
 
-        <label for="correo">Correo electrónico:</label>
-        <input type="email" id="correo" name="correo" required><br>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br>
 
-        <label for="contrasena">Contraseña:</label>
-        <input type="password" id="contrasena" name="contrasena" required><br>
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" required><br>
 
-        <label for="direccion">Dirección:</label>
-        <input type="text" id="direccion" name="direccion"><br>
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena" name="contrasena" value="Ferremax01" required><br>
 
-        <label for="telefono">Teléfono:</label>
-        <input type="tel" id="telefono" name="telefono"><br>
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion"><br>
 
-        <label for="pregunta_seguridad">Pregunta de Seguridad:</label>
-        <select id="pregunta_seguridad" name="pregunta_seguridad" required>
-            <!-- Opciones de pregunta de seguridad -->
-            {% for pregunta in preguntas %}
-            <option value="{{pregunta.id_preg}}">{{pregunta.nombre_preg}}</option>
-            {% endfor %}
-        </select><br>
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono"><br>
 
-        <label for="rol">Rol:</label>
-        <select id="rol" name="rol" required>
-            <!-- Opciones de rol -->
-            {% for rol in roles %}
-            <option value="{{rol.id_rol}}">{{rol.nombre_rol}}</option>
-            {% endfor %}
-        </select><br>
 
-        <button type="submit">Agregar Trabajador</button>
-    </form>
+            <label for="rol">Rol:</label>
+            <select id="rol" name="rol" required>
+                <!-- Opciones de rol -->
+                {% for rol in roles %}
+                <option value="{{rol.id_rol}}">{{rol.nombre_rol}}</option>
+                {% endfor %}
+            </select><br>
 
-    <!-- Script para enviar los datos del formulario a la API -->
+            <button type="submit">Agregar Trabajador</button>
+
+
+            <p id="rutError" style="color: red; display: none;">El RUT ingresado no es válido.</p>
+        </form>
+    </div>
+    <br><br>
     <script>
-        document.getElementById("formulario-trabajador").addEventListener("submit", function(event) {
-            event.preventDefault();
+        function validarRut() {
+            var rut = document.getElementById('rut').value.trim();
+            console.log("RUT ingresado:", rut);
 
-            var formData = new FormData(this);
+            // Validar formato básico del RUT (números y dígito verificador)
+            var regex = /^[0-9]+-[0-9kK]{1}$/;
+            if (!regex.test(rut)) {
+                console.log("Formato de RUT no válido.");
+                document.getElementById('rutError').style.display = 'block';
+                return false;
+            }
 
-            fetch('api/creausuario', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('Trabajador agregado exitosamente.');
-                    window.location.href = 'Sesion'; // Redirige a la página de administrador después de agregar el trabajador
-                } else {
-                    alert('Ocurrió un error al agregar el trabajador. Por favor, inténtalo de nuevo.');
+            // Validar RUT usando algoritmo
+            var cleanRut = rut.replace(/[\.\-]/g, '');  // Eliminar puntos y guiones
+            console.log("RUT limpio:", cleanRut);
+
+            var dv = cleanRut.slice(-1).toUpperCase();  // Obtener dígito verificador
+            console.log("Dígito verificador ingresado:", dv);
+
+            var rutNumber = parseInt(cleanRut.slice(0, -1), 10);  // Obtener parte numérica del RUT
+            console.log("Número de RUT:", rutNumber);
+
+            var suma = 0;
+            var mul = 2;
+            for (var i = rutNumber.toString().length - 1; i >= 0; i--) {
+                suma = suma + rutNumber.toString().charAt(i) * mul;
+                mul++;
+                if (mul == 8) {
+                    mul = 2;
                 }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Ocurrió un error grave al agregar el trabajador. Por favor, inténtalo de nuevo.');
-            });
-        });
-    </script>
-</body>
-</html>
+            }
 
+            var res = suma % 11;
+            var digitoVerificador = res == 0 ? 0 : 11 - res;
+            console.log("Dígito verificador calculado:", digitoVerificador);
+
+            if (!(dv == digitoVerificador || (dv == 'K' && digitoVerificador == 10))) {
+                console.log("El RUT no es válido.");
+                document.getElementById('rutError').style.display = 'block';
+                return false;
+            }
+
+            console.log("El RUT es válido.");
+            return true;
+        }
+    </script>
+
+</body>
+
+</html>

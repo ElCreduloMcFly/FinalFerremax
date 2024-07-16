@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import mostrarhome,mostrarcarrito,mostrarherramientas,mostrarinicio,mostrarvendedor,iniciarsesion,registrar,finsesion,mostraragregar,agregarproducto,eliminarproducto,modificarproducto,mostrarproducto,mostrarnuevotrabajador,mostrarmenulogin,error,rechazo,webpay_plus_commit,webpay_plus_create
+from .views import mostrarhome,mostrarcarrito,mostrarherramientas,mostrarinicio,mostrarvendedor,iniciarsesion,registrar,finsesion,mostraragregar,agregarproducto,eliminarproducto,modificarproducto,mostrarproducto,mostrarnuevotrabajador,mostrarmenulogin,error,rechazo,webpay_plus_commit,webpay_plus_create,agregartrabajador
 
 urlpatterns = [
     path('',mostrarhome,name="MenuPrincipal"),
@@ -15,6 +15,7 @@ urlpatterns = [
     path('registrar/',registrar,name="registrar"),
     path('finsesion/',finsesion, name='finsesion'),
     path('agregarproducto/',agregarproducto, name='agregarproducto'),
+    path('agregartrabajador/',agregartrabajador, name='agregartrabajador'),
     path('eliminarproducto/<id_prod>',eliminarproducto, name='eliminarproducto'),
     path('mostrarproducto/<int:id_prod>',mostrarproducto, name='mostrarproducto'),
     path('modificarproducto/<int:id_prod>',modificarproducto, name='modificarproducto'),

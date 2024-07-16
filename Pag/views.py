@@ -187,6 +187,41 @@ def modificarproducto(request,id_prod):
 
     return redirect('Vendedor')
 
+def agregartrabajador(request):
+    rutT = request.POST['rut']
+    nombreT = request.POST['nombre']
+    correoT = request.POST['correo']
+    contrasenaT = request.POST['contrasena']
+    direccionT = request.POST['direccion']
+    telefonoT = request.POST['telefono']
+    pregT = '¿Nombre de tu mejor amigo?'
+    rolT = request.POST['rol']
+
+    if User.objects.filter(email=correoT).exists():
+        return render(request, 'correo_registrado.html')
+    
+    
+    user = User.objects.create_user(username = correoT,
+                                    email= correoT,
+                                    password= contrasenaT)
+    if rolT == 'Administrador':
+            user.is_staff = True  
+    else:
+            user.is_staff = False
+
+    
+    registroPreg = pregunta.objects.get(id_preg = pregT)
+    registroRol = rol.objects.get(id_rol=rolT)
+    
+    usuario.objects.create(rut_usu = rutT,nombre_usu = nombreT,correo_usu = correoT,
+                           contrasena_usu = contrasenaT,direccion_usu = direccionT,telefono_usu = telefonoT ,
+                           rol_usu = registroRol, id_preg = registroPreg)
+        
+    # Guardar el usuario para aplicar el cambio de is_staff
+    user.is_active = True
+    user.save()
+    return redirect('Vendedor')
+
 
 
 #WebPay
