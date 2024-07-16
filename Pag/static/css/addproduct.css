@@ -1,0 +1,144 @@
+/* Estilos generales */
+:root {
+    --font: 'Lato', sans-serif;
+    --size: 16px;
+    --normal: 400;
+    --bold: 500;
+    --primary: #ffffff;
+}
+
+body {
+    background: radial-gradient(ellipse, rgb(77, 82, 255), rgb(63, 175, 255)) rgb(52, 170, 255);
+    font-family: var(--font);
+    font-size: var(--size);
+    color: var(--primary);
+    font-weight: var(--normal);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Asegura que el contenido se alinee verticalmente */
+    align-items: center; /* Centra horizontalmente el contenido */
+}
+
+/* Estilos del encabezado */
+header {
+    background-color: #fcfcfc00;
+    color: #ffffff;
+    padding: 10px 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .navbar-brand {
+    font-size: 24px;
+    font-weight: var(--bold);
+    text-decoration: none;
+}
+
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    position: relative;
+}
+
+header nav ul li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.3s ease;
+}
+
+header nav ul li:hover > ul {
+    display: block;
+}
+
+header nav ul ul {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    top: 100%;
+    left: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+header nav ul ul li {
+    width: 200px;
+}
+
+header nav ul ul li a {
+    padding: 10px;
+    font-size: 14px;
+}
+
+header nav ul ul li a:hover {
+    background-color: #555;
+}
+
+/* Estilos del formulario */
+.container {
+    background-color: #ffffff;
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    margin: 100px auto 0; /* Centrado vertical y margen superior */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form > div {
+    margin-bottom: 15px;
+}
+
+form label {
+    font-weight: var(--bold);
+    margin-bottom: 5px; /* Espacio entre etiqueta y campo */
+    display: block; /* Convertir la etiqueta en bloque para ocupar ancho completo */
+    color: #333; /* Color de texto */
+}
+
+form input, form select {
+    width: calc(100% - 16px); /* Resta el padding para mantener el ancho total */
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000000;
+}

@@ -1,22 +1,42 @@
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-
-* {
+:root {
+	--font: Lato;
+	--size: 16px;
+	--normal: 400;
+	--bold: 500;
+	--primary: #ffffff; 
+  }
+  
+  * {
+	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
-}
+  }  
 
 body {
-	background-image: linear-gradient(rgba(247, 176, 96, 0.3), rgba(211, 191, 80, 0.3)),
-    url(Fondo.png);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	font-family: 'Montserrat', sans-serif;
-	height: 100vh;
-	/*margin: -20px 0 50px; */
-
+	width: 100%;
+	background: radial-gradient(ellipse, rgb(77, 82, 255), rgb(63, 175, 255)) rgb(52, 170, 255)!IMPORTANT;
+	font-family: var(--font);
+	font-size: var(--size);
+	color: var(--primary);
+	font-weight: var(--normal);
 }
+
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+                0 10px 10px rgba(0,0,0,0.22);
+    width: 100%;
+    max-width: 800px; /* Ajusta el ancho máximo del contenedor si es necesario */
+    padding: 20px; /* Espaciado interior */
+    margin: auto; /* Centra el contenedor horizontalmente */
+    position: relative; /* Asegura que los elementos posicionados relativamente funcionen correctamente */
+    height: auto; /* Ajusta la altura automáticamente según el contenido */
+    max-height: 600px; /* Establece una altura máxima si es necesario */
+}
+
+
 
 h1 {
 	font-weight: bold;
@@ -49,8 +69,8 @@ a {
 
 button {
 	border-radius: 20px;
-	border: 1px solid #ffaf03;
-	background-color: #ffaf03;
+	border: 1px solid rgb(0, 149, 255)!important;
+	background-color: rgb(0, 149, 255)!important;
 	color: #ffffff;
 	font-size: 12px;
 	font-weight: bold;
@@ -74,7 +94,7 @@ button.ghost {
 }
 
 form {
-	background-color: #FFFFFF;
+	background-color: rgb(0, 149, 255);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -126,6 +146,7 @@ input {
 	top: 0;
 	height: 100%;
 	transition: all 0.6s ease-in-out;
+
 }
 
 .sign-in-container {
@@ -179,7 +200,7 @@ input {
 	transform: translateX(-100%);
 }
 .overlay {
-	background: linear-gradient(to right, hsl(34, 87%, 47%), hsl(32, 84%, 52%), hsl(25, 100%, 50%), hsl(30, 83%, 47%), hsl(34, 100%, 70%));
+	background: linear-gradient(to right, hsl(239, 100%, 63%), hsl(240, 75%, 63%), hsl(242, 100%, 59%), hsl(242, 73%, 58%), hsl(230, 100%, 70%));
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
@@ -247,8 +268,8 @@ input {
 }
 
 footer {
-    background-color: #222;
-    color: #fff;
+    background-color: #22222200;
+    color: #ffffff00;
     font-size: 14px;
     bottom: 0;
     position: fixed;
@@ -256,6 +277,7 @@ footer {
     right: 0;
     text-align: center;
     z-index: 999;
+    padding: 10px 0; /* Añade un poco de espacio interno para separarlo del contenido */
 }
 
 footer p {
@@ -280,7 +302,7 @@ footer a {
 
 /* Estilos específicos del menú */
 
-.menu .navbar {
+.navbar {
     height: 70px;
     background-color: transparent;
     padding: 0;
@@ -290,44 +312,54 @@ footer a {
     width: 100%;
 }
 
-.menu .navbar-brand {
-    color: #333;
-    font-weight: bold;
+.navbar-brand {
+    color: rgba(255, 255, 255, 0.874);
+    font-weight: var(--bold);
     font-size: 24px;
     line-height: 29px;
-    margin-left: 10px;
-    margin-right: auto; /* Cambié esto para que "Ferremas" se alinee a la izquierda */
-    transition: all 1s;
+    margin-left: 13%;
+	transition: all;
+  	transition-duration: 1s;
 }
 
-.menu .navbar-collapse {
-    flex-basis: auto;
+.navbar-brand:hover,
+.navbar-brand:focus {
+  transform: scale(1.2);
+  -webkit-text-stroke: 1px white;
+  -webkit-text-stroke-color: transparent;
 }
 
-.menu .navbar-nav {
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.navbar-nav {
     display: flex;
     justify-content: flex-end; /* Cambié esto para que los elementos del menú se alineen a la derecha */
     width: auto;
     margin-right: 10px; /* Un pequeño margen a la derecha */
 }
 
-.menu .navbar-nav .nav-item {
+.navbar-nav .nav-item {
     margin: 0 10px;
 }
 
-.menu .navbar-nav .nav-link {
-    color: #333;
+.navbar-nav .nav-link {
+    color: #ffffffdd;
     padding: 10px 0;
     font-weight: bold;
     transition: all 1s;
     opacity: 1;
 }
 
-.menu .navbar-nav .nav-link:hover,
-.menu .navbar-nav .nav-link:active,
-.menu .navbar-nav .nav-link:focus {
-    border-bottom: 2px solid #333;
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:active,
+.navbar-nav .nav-link:focus {
+    border-bottom: 2px solid #ffffff;
     transform: translateY(-5px);
     opacity: 1;
 }
 
+.aviso{
+    color:red;
+}

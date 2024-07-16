@@ -14,17 +14,11 @@
 
 body {
   width: 100%;
-  background-color: transparent;
+  background: radial-gradient(ellipse, rgb(77, 82, 255), rgb(63, 175, 255)) rgb(52, 170, 255);
   font-family: var(--font);
   font-size: var(--size);
   color: var(--primary);
   font-weight: var(--normal);
-}
-
-.mainContainer {
-  background-image: linear-gradient(rgba(59, 59, 59, 0.3), rgba(45, 44, 44, 0.3)),
-    url(Fondo.png);
-  background-repeat: repeat;
 }
 
 .navbar {
@@ -55,14 +49,10 @@ body {
 }
 
 .navbar-nav {
-  width: 70% !important;
+  width: 45% !important;
   position: relative;
 }
 
-.navbar-nav .last {
-  position: absolute;
-  right: 0 !important;
-}
 
 .navbar-nav .nav-item {
   margin: 0 10px;
@@ -129,7 +119,7 @@ body {
   margin-top: -600px; 
   margin-bottom: 20px;
   width: 15rem;
-  box-shadow: 2px solid rgb(253, 148, 0);
+  box-shadow: 2px solid rgb(0, 149, 255);
   overflow: hidden;
 }
 .card-img-top {
@@ -146,27 +136,36 @@ body {
 .card-block .add-to-cart {
   margin-top: 10px;
   margin-bottom: 10px;
-  background-color: rgb(234, 128, 0);
+  background-color: rgb(0, 8, 255);
   border: none;
   border-radius: 15px;
   color: white;
   transition: all 0.3s ease;
 }
 .add-to-cart.btn {
-  background-color: orange;
-  border-color: orange; /* Para que el borde también sea naranja */
-  color: white; /* Para asegurar que el texto sea legible */
-}
-.btn-primary {
-  background-color: orange;
-  border-color: orange; /* Para que el borde también sea naranja */
+  background-color: rgb(0, 149, 255);
+  border-color: rgb(0, 149, 255); /* Para que el borde también sea naranja */
   color: white; /* Para asegurar que el texto sea legible */
 }
 
 .card-block .add-to-cart:hover {
-  background-color: darkorange; /* Color de fondo más oscuro al pasar el mouse */
+  background-color: rgb(0, 108, 186); /* Color de fondo más oscuro al pasar el mouse */
+}
+.btn-warning {
+  background-color: rgb(0, 149, 255) !important;
+  color: #ffffff; /* Color del texto */
+  border-color:rgb(0, 149, 255) !important;
+  transition: background-color 0.3s ease; 
 }
 
+.btn-warning:hover {
+  background-color: rgb(0, 108, 186)!important;
+  color: #ffffff;
+}
+.btn-warning:focus,
+.btn-warning:active {
+  outline: 2px solid rgb(0, 108, 186)!important;
+}
  /* Dropdown bar estilo */
  .dropdown-menu {
   background-color: #333; /* Color de fondo */
@@ -184,21 +183,14 @@ body {
   background-color: #555; /* Color de fondo al pasar el mouse */
 }
 
-.quantity-buttons {
+/* Ajustar el espacio y alineación */
+.input-group {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Espacio uniforme entre los elementos */
-  max-width: 150px; /* Ajusta el ancho máximo de la barra */
-  margin: auto; /* Centra la barra horizontalmente */
 }
 
-.quantity-buttons button {
-  height: 38px; /* Ajusta la altura de los botones */
-  margin: 0 5px; /* Agrega un margen horizontal entre los botones */
-}
-
-.quantity-buttons input {
-  height: 38px; /* Ajusta la altura del campo de entrada */
-  width: 70px; /* Ajusta el ancho del campo de entrada */
-  text-align: center; /* Centra el texto dentro del campo */
+.input-group .item-count {
+  margin: 0 10px;
+  min-width: 30px;
+  text-align: center;
 }

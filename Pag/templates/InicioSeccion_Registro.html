@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/inicioseccion.css' %}">
     <title>Ferremas</title>
 </head>
 <body>
@@ -24,26 +25,28 @@
     <div class="container" id="container">
         <!--Registro-->
         <div class="form-container sign-up-container">
-            <form action="{% url 'registrar' %}" method="post" id="formulario-registro" onsubmit="return validarRut()">
+            <form action="{% url 'registrar' %}" method="post" id="regis" onsubmit="return validarRut()">
                 {% csrf_token %}
                 <h1>Registrate </h1>
                 <span>Usa tu correo electrónico para registrarte 🤔</span>
-                <input type="text" name="rut" id="rut"  placeholder="Ingresa tu Rut sin puntos pero con guion" />
+
                 
-                <input type="text" name="name" placeholder="Ingresa tu Nombre " />
-                <input type="text" name="direccion" placeholder="Ingresa tu Dirreción" />
-                <input type="email" name="correo" placeholder="Ingresa tu Correo electrónico" />
-                <input type="number" name="telefono" placeholder="Ingresa tu Telefono " />
-                <input type="password" name="password" placeholder=" Ingresa tu Contraseña" />   
+                    <input type="text" name="rut" id="rut"  placeholder="Ingresa tu Rut sin puntos pero con guion" />
+                    <input type="text" name="name"  placeholder="Ingresa tu Nombre " /> 
+                    <input type="text" name="direccion" placeholder="Ingresa tu Dirección" /> 
+                    <input type="email" name="correo" placeholder="Ingresa tu Correo electrónico" />
+                    <input type="number" name="telefono" placeholder="Ingresa tu Telefono " />
+                    <input type="password" name="password"  placeholder="Ingresa tu Contraseña" />
+                
                 <select name="pregunta">
                     <option selected>Selecciona una pregunta de Seguridad</option>
                     {% for pregunta in preguntas %}
                         <option value="{{ pregunta.id_preg }}">{{ pregunta.nombre_preg }}</option>
                     {% endfor %}
                 </select>
-                
-                <input type="text" name="rs" placeholder="Respuesta de Seguridad " />
+                <input type="text" name="rs" id="resp" placeholder="Respuesta de Seguridad " />
                 <button>Registrarse </button>
+
                 <p id="rutError" style="color: red; display: none;">El RUT ingresado no es válido.</p>
             </form>
              <!--Fin de formulario de Registro-->
@@ -81,11 +84,10 @@
         </div>
         <!-- Fin de Interfaces de Hola contructor-->
     </div>
-
+    <br><br>
     <!-- CSS Y JS -->
-    <link rel="stylesheet" href="{% static 'css/inicioseccion.css' %}">
+    
     <script src="{% static 'javascript/inicioseccion.js' %}"></script>
-
     <script>
         function validarRut() {
             var rut = document.getElementById('rut').value.trim();
@@ -133,9 +135,11 @@
             return true;
         }
     </script>
+    
+
+    <!-- carrito-->
 
 </body>
 <footer>
-    <p>&copy; 2024 Tienda Online. Todos los derechos reservados.</p>
 </footer>
 </html>

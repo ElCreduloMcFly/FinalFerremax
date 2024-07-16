@@ -7,10 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=AZ4GaUz8xtygI8ylwKPfo_Gt4nQB2lMkCaMG65x34nhrnJ40TxbPE0YdiQKVnFzAlOmEoDpeoXALVt8i"></script>
 
-    <link rel="stylesheet" href="{% static 'css/herramientas.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <script src="https://www.paypal.com/sdk/js?client-id=AZ4GaUz8xtygI8ylwKPfo_Gt4nQB2lMkCaMG65x34nhrnJ40TxbPE0YdiQKVnFzAlOmEoDpeoXALVt8i"></script>
+
     <title>Ferremas</title>
 </head>
 
@@ -32,19 +34,24 @@
                     </li>
                     <!-- Enlace al carrito existente -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Carrito <i class="fa-solid fa-cart-shopping"></i>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <!-- Nuevo contenido del carrito -->
-                            <button type="button" class="dropdown-item" data-toggle="modal" data-target="#cart">Ver Carrito (<span class="total-count"></span>)</button>
+                            <button type="button" class="dropdown-item" data-toggle="modal" data-target="#cart">Ver
+                                Carrito (<span class="total-count"></span>)</button>
                             <button class="dropdown-item clear-cart">Vaciar Carrito</button>
                         </div>
                     </li>
                 </ul>
             </div>
         </nav>
+        <!-- INTRODUCCION TIENDA -->
+        <div class="row legend">
+        </div>
+    </div>
 
     <!-- PRODUCTOS -->
 
@@ -52,34 +59,35 @@
         <div class="row">
             {% for producto in productos %}
             <div class="col">
-                <div class="card">
-                    <img class="card-img-top" src="{{ producto.imagen.url }}" alt="{{ producto.nombre_prod }}" onclick="showDetails('details-{{ producto.id_prod }}')">
+                <div class="card" style="margin-top: -800px;">
+                    <img class="card-img-top" src="{{ producto.imagen.url }}" alt="{{ producto.nombre_prod }}"
+                        onclick="showDetails('details-{{ producto.id_prod }}')">
                     <div class="card-block">
                         <h4 class="card-title">{{ producto.nombre_prod }}</h4>
                         <p class="card-text">Precio: ${{ producto.precio }}</p>
-                        <a href="#" data-name="{{ producto.nombre_prod }}" data-price="{{ producto.precio }}" data-count="1" class="add-to-cart btn btn-primary">Agregar al carrito</a>
-            
+                        <a href="#" data-name="{{ producto.nombre_prod }}" data-price="{{ producto.precio }}"
+                            data-count="1" class="add-to-cart btn btn-primary">Agregar al carrito</a>
+
                         <!-- Detalles adicionales ocultos por defecto -->
-                        <button class="rounded-circle btn btn-warning" onclick="showDetails('details-{{ producto.id_prod }}')" data-details="details-{{ producto.id_prod }}">+</button>
+                        <button class="rounded-circle btn btn-warning"
+                            onclick="showDetails('details-{{ producto.id_prod }}')"
+                            data-details="details-{{ producto.id_prod }}">+</button>
                         <br>
                         <div class="additional-details" id="details-{{ producto.id_prod }}" style="display: none;">
                             <!-- Agrega aquí los detalles adicionales del producto -->
                             <p>{{ producto.descripcion }}</p>
-                            <div class="quantity-buttons">
-                                <button onclick="decreaseQuantity('quantity-{{ producto.id_prod }}')" class="rounded-circle btn btn-warning">-</button>
-                                <input type="number" id="quantity-{{ producto.id_prod }}" value="1" min="1" class="form-control">
-                                <button onclick="increaseQuantity('quantity-{{ producto.id_prod }}')" class="rounded-circle btn btn-warning">+</button>
-                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
             {% endfor %}
-        </div>       
+        </div>
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -96,45 +104,13 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">
-                        Comprar
-                        <!--PayPal-->
-    <DIV id="paypal-button-container"></DIV>
-    <script>
-        var plata = "{{ venta.total }}"; //esta variable debe ser propia
-        paypal.Buttons({
-            style: {
-                color: "silver",
-                shape: "pill",
-                label: "paypal",
-            },
-            createOrder: function (data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: plata
-                        }
-                    }]
-                })
-            },
-            onApprove: function (data, actions) {
-                actions.order.capture().then(function (detalles) {
-                    document.getElementById("submit").disabled = false
-
-                })
-            },
-
-            onCancel: function (data) {
-                alert("Pago cancelado")
-                console.log(data);
-            },
-        }).render('#paypal-button-container');
-    </script>
-                    </button>
+                    <button type="button" class="btn btn-primary">Pagar</button>
                 </div>
             </div>
         </div>
     </div>
+
+
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -142,8 +118,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="{% static 'javascript/carritoprincipal.js' %}"></script>
     <script>
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        function showDetails(id) {
+            var details = document.getElementById(id);
+            if (details.style.display === "none") {
+                details.style.display = "block";
+            } else {
+                details.style.display = "none";
+            }
         }
     </script>
 </body>

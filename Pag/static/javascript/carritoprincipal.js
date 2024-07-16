@@ -141,8 +141,8 @@ function displayCart() {
     output += "<tr>"
       + "<td>" + cartArray[i].name + "</td>" 
       + "<td>" + cartArray[i].price + "</td>"
-      + "<td><div class='input-group'><button class='minus-item input-group-addon btn btn-primary' data-name=" + cartArray[i].name + ">-</button>"
-      + "<input type='number' class='item-count form-control' data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'>"
+      + "<td><div class='input-group'><button class='minus-item input-group-addon btn btn-' data-name=" + cartArray[i].name + ">-</button>"
+      + "<span class='item-count form-control' data-name='" + cartArray[i].name + "'>" + cartArray[i].count + "</span>"
       + "<button class='plus-item btn btn-primary input-group-addon' data-name=" + cartArray[i].name + ">+</button></div></td>"
       + "<td><button class='delete-item btn btn-danger' data-name=" + cartArray[i].name + ">X</button></td>"
       + " = " 
@@ -174,46 +174,6 @@ $('.show-cart').on("click", ".plus-item", function(event) {
   shoppingCart.addItemToCart(name, 0, 1); // Asegura que al aumentar sea 1
   displayCart();
 });
-
-// Evento change para actualizar la cantidad de un ítem
-$('.show-cart').on("change", ".item-count", function(event) {
-   var name = $(this).data('name');
-   var count = Number($(this).val());
-   shoppingCart.setCountForItem(name, count);
-   displayCart();
-});
-
-// Mostrar detalles del producto
-function showDetails(detailsId) {
-  var detailsElement = document.getElementById(detailsId);
-  if (detailsElement.style.display === "" || detailsElement.style.display === "none") {
-    detailsElement.style.display = "block";
-    var yOffset = -50; // Ajusta este valor según sea necesario
-    var elementPosition = detailsElement.getBoundingClientRect().top;
-    window.scrollTo({
-      top: elementPosition + window.pageYOffset + yOffset,
-      behavior: "smooth"
-    });
-  } else {
-    detailsElement.style.display = "none";
-  }
-}
-
-// Función para incrementar la cantidad
-function increaseQuantity(quantityId) {
-  var quantityInput = document.getElementById(quantityId);
-  var currentValue = parseInt(quantityInput.value);
-  quantityInput.value = currentValue + 1;
-}
-
-// Función para decrementar la cantidad
-function decreaseQuantity(quantityId) {
-  var quantityInput = document.getElementById(quantityId);
-  var currentValue = parseInt(quantityInput.value);
-  if (currentValue > 1) {
-    quantityInput.value = currentValue - 1;
-  }
-}
 
 // Mostrar carrito inicialmente al cargar la página
 displayCart();

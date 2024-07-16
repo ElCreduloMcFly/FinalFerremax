@@ -1,0 +1,188 @@
+:root {
+    --font: 'Lato', sans-serif;
+    --size: 16px;
+    --normal: 400;
+    --bold: 500;
+    --primary: #ffffff;
+}
+
+body {
+    background: radial-gradient(ellipse, rgb(77, 82, 255), rgb(63, 175, 255)) rgb(52, 170, 255);
+    font-family: var(--font);
+    font-size: var(--size);
+    color: var(--primary);
+    font-weight: var(--normal);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Asegura que el contenido se alinee verticalmente */
+    align-items: center; /* Centra horizontalmente el contenido */
+}
+
+/* Estilos del encabezado */
+header {
+    background-color: #fcfcfc00;
+    color: #ffffff;
+    padding: 10px 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .navbar-brand {
+    font-size: 24px;
+    font-weight: var(--bold);
+    text-decoration: none;
+}
+
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    position: relative;
+}
+
+header nav ul li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.3s ease;
+}
+
+header nav ul li:hover > ul {
+    display: block;
+}
+
+header nav ul ul {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    top: 100%;
+    left: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+header nav ul ul li {
+    width: 200px;
+}
+
+header nav ul ul li a {
+    padding: 10px;
+    font-size: 14px;
+}
+
+header nav ul ul li a:hover {
+    background-color: #555;
+}
+
+.container-fluid {
+    background-color: #ffffff;
+    max-width: 1000px;
+    width: 100%;
+    padding: 20px;
+    margin: 100px auto 0; /* Centrado vertical y margen superior */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+/* Estilos globales para th */
+th {
+    color: #000000; /* Color de la letra negra */
+    padding: 10px; /* Espacio interno en cada th */
+}
+td {
+    color: #000000; /* Color de la letra negra */
+}
+
+th:not(:last-child) {
+    padding-right: 80px; /* Espacio entre th */
+}
+
+/* Estilos de la tabla */
+.table th, .table td {
+    text-align: left;
+}
+
+.table thead th {
+    border-bottom: 2px solid #ddd; /* Línea inferior en los encabezados */
+}
+
+.table tbody td {
+    border-top: 1px solid #ddd; /* Línea superior en los datos */
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.btn-default {
+    background-color: #007bff; /* Color azul */
+    color: #ffffff; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 5px 10px; /* Espacio interno */
+    text-align: center; /* Centrar el texto */
+    text-decoration: none; /* Sin subrayado en el texto */
+    display: inline-block; /* Mostrar en línea */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+.btn-default:hover {
+    background-color: #0056b3; /* Color azul más oscuro al pasar el ratón */
+}
+
+/* Estilo para el enlace dentro del botón */
+.btn-default a {
+    color: #ffffff; /* Color del texto del enlace */
+    text-decoration: none; /* Sin subrayado en el enlace */
+}
+
+.btn-default a:hover {
+    color: #ffffff; /* Mantener el color del texto del enlace al pasar el ratón */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Color rojo */
+    color: #ffffff; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 5px 10px; /* Espacio interno */
+    text-align: center; /* Centrar el texto */
+    text-decoration: none; /* Sin subrayado en el texto */
+    display: inline-block; /* Mostrar en línea */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Color rojo más oscuro al pasar el ratón */
+}
+
+/* Estilo para el enlace dentro del botón */
+.btn-danger a {
+    color: #ffffff; /* Color del texto del enlace */
+    text-decoration: none; /* Sin subrayado en el enlace */
+}
+
+.btn-danger a:hover {
+    color: #ffffff; /* Mantener el color del texto del enlace al pasar el ratón */
+}
