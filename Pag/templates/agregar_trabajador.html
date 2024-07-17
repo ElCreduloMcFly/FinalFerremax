@@ -40,13 +40,21 @@
             <input type="email" id="correo" name="correo" required><br>
 
             <label for="contrasena">Contraseña:</label>
-            <input type="password" id="contrasena" name="contrasena" value="Maestranza01" required><br>
+            <input type="password" id="contrasena" name="contrasena" value="Ferremas01" required><br>
 
             <label for="direccion">Dirección:</label>
             <input type="text" id="direccion" name="direccion"><br>
 
             <label for="telefono">Teléfono:</label>
             <input type="tel" id="telefono" name="telefono"><br>
+
+            <label for="pregunta">Pregunta de Seguridad:</label>
+            <select id="pregunta" name="pregunta" required>
+                <option selected>Selecciona una pregunta de Seguridad</option>
+                {% for pregunta in preguntas %}
+                    <option value="{{ pregunta.id_preg }}">{{ pregunta.nombre_preg }}</option>
+                {% endfor %}
+            </select>
 
             <label for="rol">Rol:</label>
             <select id="rol" name="rol" required>

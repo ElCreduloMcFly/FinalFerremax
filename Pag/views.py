@@ -194,11 +194,11 @@ def agregartrabajador(request):
     contrasenaT = request.POST['contrasena']
     direccionT = request.POST['direccion']
     telefonoT = request.POST['telefono']
-    pregT = 1
+    pregT = request.POST['pregunta']
     rolT = request.POST['rol']
 
     if User.objects.filter(email=correoT).exists():
-        return render(request, 'correo_registrado.html')
+        return render(request, 'correo_registrado_trabajador.html')
     
     
     user = User.objects.create_user(username = correoT,

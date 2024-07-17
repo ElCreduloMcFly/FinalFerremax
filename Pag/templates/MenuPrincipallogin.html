@@ -92,57 +92,27 @@
     <!-- Modal -->
     <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Carrito</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+            <form method="POST" action="/create-webpay">{% csrf_token %}
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Carrito</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="show-cart table">
+                        </table>
+                        <div>Total: $<span class="total-cart"></span></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <!-- Botón para realizar el pago -->
+                        <button type="submit" class="btn btn-primary" id="pay-button">Pagar con Webpay</button>
+                    </div>
+                    <input type="hidden" name="totalAmount" id="totalAmount">
                 </div>
-                <div class="modal-body">
-                    <table class="show-cart table">
-
-                    </table>
-                    <div>Total: $<span class="total-cart"></span></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">
-                        <!--PayPal-->
-    <DIV id="paypal-button-container"></DIV>
-    <script>
-        var plata = "3000"; //esta variable debe ser propia
-        paypal.Buttons({
-            style: {
-                color: "silver",
-                shape: "pill",
-                label: "paypal",
-            },
-            createOrder: function (data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: plata
-                        }
-                    }]
-                })
-            },
-            onApprove: function (data, actions) {
-                actions.order.capture().then(function (detalles) {
-                    document.getElementById("submit").disabled = false
-
-                })
-            },
-
-            onCancel: function (data) {
-                alert("Pago cancelado")
-                console.log(data);
-            },
-        }).render('#paypal-button-container');
-    </script>
-                    </button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 
