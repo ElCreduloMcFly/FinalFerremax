@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maestranza-Vendedor</title>
+    <title>Ferremax-Vendedor</title>
     <link rel="stylesheet" href="{% static 'css/equipos.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     
@@ -16,18 +16,12 @@
                 <li>
                     <a href="javascript:void(0);">Inventario <i class="fas fa-chevron-down"></i></a>
                     <ul>
-
                         <li><a href="{% url 'Vendedor' %}">Ver inventario actual</a></li>
                         <li><a href="{% url 'mostrarcategoria' %}">Añadir Producto</a></li>
                     </ul>
                 </li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                <li><a href="{% url 'mostrarnuevotrabajador' %}">Nuevo Trabajador</a></li>
+                
                 <li><a href="{% url 'finsesion' %}">Cerrar Sesion</a></li>
 
             </ul>
@@ -90,29 +84,7 @@
         </div>
     </div>
 
-    <!-- Modal de edición -->
-    <div id="editModal" class="modal">
-        <div class="modal-content">
-            <span class="close" ng-click="closeModal()">&times;</span>
-            <h2>Editar producto</h2>
-            <form name="editarFormulario" novalidate>
-                <div class="form-group">
-                    <label for="editarPrecio">Precio:</label>
-                    <input autocomplete="off" required id="editarPrecio" placeholder="Escribe el precio del producto" type="number" class="form-control" ng-model="productoSeleccionado.precio" />
-                </div>
-                <div class="form-group">
-                    <label for="editarDescripcion">Descripción:</label>
-                    <textarea id="editarDescripcion" class="form-control" ng-model="productoSeleccionado.descripcion"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="editarCantidad">Cantidad:</label>
-                    <input type="number" id="editarCantidad" class="form-control" ng-model="productoSeleccionado.cantidad" />
-                </div>
-                <button type="button" ng-disabled="editarFormulario.$invalid" ng-click="guardarCambios()" class="btn btn-success form-control">Guardar cambios</button>
-            </form>
-        </div>
-    </div>
-
+    
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="{% static 'js/inventario.js' %}"></script>

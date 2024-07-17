@@ -194,7 +194,7 @@ def agregartrabajador(request):
     contrasenaT = request.POST['contrasena']
     direccionT = request.POST['direccion']
     telefonoT = request.POST['telefono']
-    pregT = '¿Nombre de tu mejor amigo?'
+    pregT = 1
     rolT = request.POST['rol']
 
     if User.objects.filter(email=correoT).exists():
@@ -229,7 +229,8 @@ def webpay_plus_create(request):
     print("Webpay Plus Transaction.create")
     buy_order = str(random.randrange(1000000, 99999999))
     session_id = str(random.randrange(1000000, 99999999))
-    amount = 10000 #request.POST.get('total')
+    amount = request.POST.get('totalAmount', 0)  # Valor por defecto 0 si 'totalAmount' no existe
+    print(f"Total Amount Received: {amount}")
     return_url = 'http://localhost:8000/' + 'commit-webpay'
     
     tx = Transaction(WebpayOptions(IntegrationCommerceCodes.WEBPAY_PLUS, IntegrationApiKeys.WEBPAY))

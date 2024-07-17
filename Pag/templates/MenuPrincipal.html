@@ -91,7 +91,7 @@
     <!-- Modal -->
     <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
-            <form  method="POST" action="/create-webpay">{% csrf_token %}
+            <form method="POST" action="/create-webpay">{% csrf_token %}
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Carrito</h5>
@@ -101,7 +101,6 @@
                     </div>
                     <div class="modal-body">
                         <table class="show-cart table">
-
                         </table>
                         <div>Total: $<span class="total-cart"></span></div>
                     </div>
@@ -110,12 +109,13 @@
                         <!-- Botón para realizar el pago -->
                         <button type="submit" class="btn btn-primary" id="pay-button">Pagar con Webpay</button>
                     </div>
+                    <input type="hidden" name="totalAmount" id="totalAmount">
                 </div>
             </form>
         </div>
     </div>
 
-    
+
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
