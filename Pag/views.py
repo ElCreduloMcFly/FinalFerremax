@@ -194,7 +194,7 @@ def agregartrabajador(request):
     contrasenaT = request.POST['contrasena']
     direccionT = request.POST['direccion']
     telefonoT = request.POST['telefono']
-    pregT = '¿Nombre de tu mejor amigo?'
+    pregT = 1
     rolT = request.POST['rol']
 
     if User.objects.filter(email=correoT).exists():

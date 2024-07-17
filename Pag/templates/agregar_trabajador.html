@@ -48,14 +48,6 @@
             <label for="telefono">Teléfono:</label>
             <input type="tel" id="telefono" name="telefono"><br>
 
-            <label for="pregunta_seguridad">Pregunta de Seguridad:</label>
-            <select id="pregunta_seguridad" name="pregunta_seguridad" required>
-                <!-- Opciones de pregunta de seguridad -->
-                {% for pregunta in preguntas %}
-                <option value="{{pregunta.id_preg}}">{{pregunta.nombre_preg}}</option>
-                {% endfor %}
-            </select><br>
-
             <label for="rol">Rol:</label>
             <select id="rol" name="rol" required>
                 <!-- Opciones de rol -->
